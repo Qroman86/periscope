@@ -1,19 +1,70 @@
+# coding=utf-8
 import json
 
-minsk_subway_station = """{
+minsk_subway_stations = """{
 "city":"Minsk",
 "number_of_lines":2,
 "lines":[
     {
-        "number":1,
-        "colour":"blue"
+        "id":1,
+        "colour":"blue",
+        "data":""
     },
     {
-        "number":2,
-        "colour":"red"
+        "id":2,
+        "colour":"red",
+        "data":""
     }
 ]
 }"""
 
-parsed_string = json.loads(minsk_subway_station)
-print(parsed_string["city"])
+blue_line_json = """{
+    "id":1,
+    "stations":[
+        {
+        
+            "name":"Уручье",        
+            "id":1
+        },
+        {
+            "name":"Борисовский тракт",
+            "id":2
+        },
+        {
+            "name":"Восток",
+            "id":3
+        },
+        {
+            "name":"Московская",
+            "id":4
+        }
+        
+        
+    ],
+    "intervals":[
+        {
+            "from":1,
+            "to":2,
+            "interval":3
+        },
+        {
+            "from":2,
+            "to":3,
+            "interval":2
+        },
+        {
+            "from":3,
+            "to":4,
+            "interval":2
+        }
+    ]
+    
+}
+"""
+
+# load metadata about city subway
+parsed_string = json.loads(minsk_subway_stations)
+# load data about blue line
+blue_line = json.loads(blue_line_json)
+parsed_string["lines"][0]["data"] = blue_line
+print(parsed_string)

@@ -1,5 +1,3 @@
-import sys
+import jsonparser
 
-print sys.getdefaultencoding()
-print("start")
-print("end")
+print(jsonparser.minsk_subway_stations)
