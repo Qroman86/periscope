@@ -56,7 +56,28 @@ blue_line_json = """{
             "from":3,
             "to":4,
             "interval":2
-        }
+        },
+        {
+            "from":4,
+            "to":5,
+            "interval":2
+        },
+        {
+            "from":5,
+            "to":6,
+            "interval":2
+        },
+        {
+            "from":6,
+            "to":7,
+            "interval":1
+        },
+        {
+            "from":7,
+            "to":8,
+            "interval":2
+        },
+        
     ]
     
 }
