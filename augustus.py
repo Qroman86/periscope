@@ -4,8 +4,8 @@ class GameMaster:
         self.title = 'GameMaster'
 
     def preparePack(self):
-        pack = Pack()
-        return pack
+        self.pack = Pack()
+        return self.pack
 
 
 class Pack:

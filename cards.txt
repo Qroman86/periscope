@@ -1,0 +1,238 @@
+{
+    "tokens":[
+            {"name":"swords","short":"sw"},
+            {"name":"shield","short":"sh"},
+            {"name":"chariot","short":"ch"},
+            {"name":"standard","short":"st"},
+            {"name":"dagger","short":"da"},
+            {"name":"catapult","short":"ca"},
+            {"name":"joker","short":"jo"}
+        ],
+    "cards":[
+        {
+            "id":79,
+            "tokens":["sw","sw","sh","st","st","da"],
+            "points":16,
+            "type":"province",
+            "name":"Epirus",
+            "region":"Europe"
+        },
+        {
+            "id":20,
+            "tokens":["sw","sw","sh","st"],
+            "points":3,
+            "type":"senator",
+            "name":"Valerius Manlius Pansa",
+            "action":{"type":"set", "times":2, "what":"legion", "to":"st"}
+        },
+        {
+            "id":30,
+            "tokens":["sh","sh","sh","ca"],
+            "point":4,
+            "type":"province",
+            "name","Gallia Narbonensis",
+            "region":"Europe",
+            "action":{"type":"set","times":2, "what":"legion", "to":"sh"}
+         },
+         {
+            "id":18,
+            "tokens":["sw","sw","sh","sh","sh"],
+            "points":8,
+            "type":"senator",
+            "name":"Aulus Giulius Vulso"
+         },
+         {
+            "id":74,
+            "tokens":["ca","ca","st","st"],
+            "points":7,
+            "type":"senator",
+            "name":"Severus Marcius Rex",
+            "feature":{"type":"sub","from":"ca","to":"st"}
+         },
+         {
+            "id":56,
+            "tokens":["ch","ch","ca","ca"],
+            "points":5,
+            "type":"province",
+            "name":"Pontus",
+            "region":"Asia",
+            "feature":{"type":"sub","from":"ch","to":"ca"}
+         },
+         {
+            "id":35,
+            "tokens":["sw","sh","ch","ca"],
+            "points":7,
+            "type":"province",
+            "name":"Pamphylia",
+            "region":"Asia",
+            "action":{"type":"get", "what":"card"}
+         },
+         {
+            "id":27,
+            "tokens":["sw","sh","ch","ca"],
+            "type":"senator",
+            "name":"Drusus Sempronius Violens",
+            "feature":{"type":"bonus","from":"ca","get":3,"max":12}
+         },
+         {
+            "id":87,
+            "tokens":["st","st","st","da","da"],
+            "points":4,
+            "type":"province",
+            "name":"Aegyptus",
+            "region":"Africa",
+            "wheat":true,
+            "gold":true,
+            "action":{"type":"finish","what":"card"}
+         },
+         {
+            "id":85,
+            "tokens":["st","st","da","da"],
+            "points":10,
+            "type":"senator",
+            "name":"Spartacus Locundus Ludens",
+            "feature":{"type":"sub","from":"st","to":"da"}
+         },
+         {
+            "id":43,
+            "tokens":["sw","sh","ch","st"],
+            "points":2,
+            "type":"senator",
+            "name":"Ericus Vanus Derlidenus",
+            "action":{"type":"reshuffle", "what":"legions"}
+         },
+         {
+            "id":76,
+            "tokens":["sw","sw","st","st","da"],
+            "points":5,
+            "type":"province",
+            "name":"Cyrenaica et Creta",
+            "action":{"type":"remove","what":"legions","times":"all_from_one_card"}
+         },
+         {
+            "id":24,
+            "tokens":["sw","sw","sh","ch","ch"],
+            "points":10,
+            "type":"province",
+            "name":"Syria",
+            "region":"Africa",
+            "gold":true
+         },
+         {
+            "id":63,
+            "tokens":["sw","sh","ch","ca","da"],
+            "type":"province",
+            "name":"Pannonia",
+            "region":"Europe",
+            "gold":true,
+            "feature":{"type":"bonus","from":"da","get":4,"max":20}
+         },
+         {
+            "id":46,
+            "tokens":["sw","sh","ch","st"],
+            "points":6,
+            "type":"senator",
+            "name":"Pius Valerius Blasio",
+            "action":{"type":"set","times":1, "what":"legion", "to":"any"}
+         },
+         {
+            "id":61,
+            "tokens":["sw","sw","sh","da","da"],
+            "points":14,
+            "type":"province",
+            "name":"Noricum",
+            "region":"Europe"
+         },
+         {
+            "id":36,
+            "tokens":["sw","sh","ch","ca"],
+            "points":5,
+            "type":"senator",
+            "name":"Cirillus Sandrus Asameo",
+            "action":{"type":"get", "what":"card"}
+         },
+         {
+            "id":8,
+            "tokens":["sw","sh","ch"],
+            "type":"senator",
+            "name":"Sosius Postumius Merula",
+            "feature":{"type":"bonus","from":"sw","get":1,"max":6}
+         },
+         {
+            "id":75,
+            "tokens":["sw","sw","st","st","da"],
+            "points":5,
+            "type":"province",
+            "name":"Macedonia",
+            "region":"Europe",
+            "action":{"type":"remove","what":"legions","times":"all_from_one_card"}
+         },
+         {
+            "id":13,
+            "tokens":["sw","sw","sw","ca"],
+            "points":3,
+            "type":"senator",
+            "name":"Publius Domitius Fidenas",
+            "action":{"type":"set","times":2, "what":"legion", "to":"sw"}
+         },
+         {
+            "id":44,
+            "tokens":["sw","sh","ch","st"],
+            "points":2,
+            "type":"province",
+            "name":"Cyprus",
+            "region":"Asia",
+            "action":{"type":"reshuffle", "what":"legions"}
+         },
+         {
+            "id":53,
+            "tokens":["sh","ch","ca","st"],
+            "type":"senator",
+            "name":"Ducenius Tarquinius Centho",
+            "feature":{"type":"bonus","from":"st","get":3,"max":15}
+         },
+         {
+            "id":16,
+            "tokens":["sh","sh","ch"],
+            "points":3,
+            "type":"province",
+            "name":"Hispania Baleares",
+            "region":"Europe",
+            "feature":{"type":"get","what":"legions","times":2}
+         },
+         {
+            "id":1,
+            "tokens":["sw","sh"],
+            "points":3,
+            "type":"senator",
+            "name":"Gaius Antonius Scipio"
+         },
+         {
+            "id":15,
+            "tokens":["sh","sh","ch"],
+            "points":3,
+            "type":"senator",
+            "name":"Titus Fabius Flaccinator",
+            "feature":{"type":"get","what":"legions","times":2}
+         },
+         {
+            "id":80,
+            "tokens":["sw","sw","sh","st","st","da"],
+            "points":16,
+            "type":"province",
+            "name":"Armenia Superior",
+            "region":"Asia"
+         },
+         {
+            "id":84,
+            "tokens":["sh","ca","st","st","da"],
+            "points":12,
+            "type":"province",
+            "name":"Achaia",
+            "region":"Europe"
+         }
+
+
+
+    ]
+}
