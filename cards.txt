@@ -107,6 +107,7 @@
             "points":5,
             "type":"province",
             "name":"Cyrenaica et Creta",
+            "red":true,
             "action":{"type":"remove","what":"legions","times":"all_from_one_card"}
          },
          {
@@ -165,6 +166,7 @@
             "type":"province",
             "name":"Macedonia",
             "region":"Europe",
+            "red":true,
             "action":{"type":"remove","what":"legions","times":"all_from_one_card"}
          },
          {
@@ -230,7 +232,79 @@
             "type":"province",
             "name":"Achaia",
             "region":"Europe"
+         },
+         {
+            "id":52,
+            "tokens":["ch","ch","ch","ca"],
+            "points":5,
+            "type":"province",
+            "name":"Arabia Petraea",
+            "region":"Africa",
+            "action":{"type":"set","times":2, "what":"legion", "to":"ch"}
+         },
+         {
+            "id":49,
+            "tokens":["sw","sw","sh","sh","ch","ca"],
+            "type":"province",
+            "name":"Cappadocia",
+            "region":"Asia",
+            "feature":{"type":"bonus","from":"asia","get":4}
+         },
+         {
+            "id":2,
+            "tokens":["sw","sh"],
+            "points":3,
+            "type":"province",
+            "name":"Italia",
+            "region":"Europe"
+         },
+         {
+            "id":10,
+            "tokens":["st","st","da","da"],
+            "points":10,
+            "type":"province",
+            "name":"Messopotamia",
+            "wheat":true,
+            "region":"Asia",
+            "feature":{"type":"sub","from":"st","to":"da"}
+         },
+         {
+            "id":41,
+            "tokens":["sw","sw","sh","ch","ca"],
+            "points":2,
+            "type":"senator",
+            "name":"Servilius Petronius Tucca",
+            "red":true,
+            "action":{"type":"remove","what":"legions","times":"2"}
+         },
+         {
+            "id":31,
+            "tokens":["sh","sh","ch","ch"],
+            "points":4,
+            "type":"province",
+            "name":"Pisidia",
+            "region":"Asia",
+            "feature":{"type":"sub","from":"sh","to":"ca"}
+         },
+         {
+            "id":10,
+            "tokens":["sw","sw","sh","sh"],
+            "points":3,
+            "type":"province",
+            "name":"Bithynia",
+            "region":"Asia",
+            "wheat":true,
+            "feature":{"type":"sub","from":"sw","to":"sh"}
+         },
+         {
+            "id":77,
+            "tokens":["sh","sh","ch","ch","ca","st"],
+            "points":15,
+            "type":"province",
+            "name":"Commagene",
+            "region":"Asia"
          }
+
 
 
 
