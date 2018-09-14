@@ -1,4 +1,6 @@
-#
+import json
+
+
 class GameMaster:
     def __init__(self):
         self.title = 'GameMaster'
@@ -36,3 +38,6 @@ class Token:
 gameMaster = GameMaster()
 pack = gameMaster.preparePack()
 print(pack.title)
+
+with open('cards.txt') as json_file:
+    data = json.load(json_file)

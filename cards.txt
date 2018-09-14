@@ -30,7 +30,7 @@
             "tokens":["sh","sh","sh","ca"],
             "point":4,
             "type":"province",
-            "name","Gallia Narbonensis",
+            "name":"Gallia Narbonensis",
             "region":"Europe",
             "action":{"type":"set","times":2, "what":"legion", "to":"sh"}
          },
@@ -366,7 +366,7 @@
             "tokens":["sw","sw","sw","sh"],
             "points":6,
             "type":"senator",
-            "name":"Julius Aurelius Longus",
+            "name":"Julius Aurelius Longus"
          },
          {
             "id":59,
@@ -379,7 +379,7 @@
          },
          {
             "id":22,
-            "tokens":["sw","sw","sh","ch","ch"]
+            "tokens":["sw","sw","sh","ch","ch"],
             "points":9,
             "type":"senator",
             "name":"Sextus Ottavius Curio"
@@ -494,7 +494,7 @@
          },
          {
             "id":82,
-            "tokens":["sw","sh","ch","ca","st","da"]
+            "tokens":["sw","sh","ch","ca","st","da"],
             "points":5,
             "type":"province",
             "name":"Assyria",
@@ -509,7 +509,7 @@
             "type":"province",
             "name":"Osroene",
             "region":"Asia",
-            "feature":{"type":"sub","from":"ca","to","st"}
+            "feature":{"type":"sub","from":"ca","to":"st"}
          },
          {
             "id":39,
@@ -521,7 +521,7 @@
          {
             "id":64,
             "tokens":["sw","sh","ch","ca","da"],
-            "type":"senator"
+            "type":"senator",
             "name":"Vibulius Camilius Glabrio",
             "red":true,
             "bonus":{"type":"bonus","from":"red","get":5}
@@ -603,7 +603,7 @@
             "type":"province",
             "name":"Alpes Poeniae",
             "region":"Europe",
-            "feature":{"type":"sub","from":"sw","to","sh"}
+            "feature":{"type":"sub","from":"sw","to":"sh"}
          },
          {
             "id":7,
@@ -615,7 +615,7 @@
          },
          {
             "id":29,
-            "tokens":["sh","sh","sh","ca],
+            "tokens":["sh","sh","sh","ca"],
             "points":4,
             "type":"senator",
             "name":"Faustus Sergius Caudex",
@@ -677,7 +677,7 @@
             "points":6,
             "type":"province",
             "name":"Gallia Lugdenensis",
-            "region":"Europe"
+            "region":"Europe",
             "red":true,
             "action":{"type":"remove","times":1, "what":"legions"}
          },
@@ -687,7 +687,7 @@
             "type":"province",
             "name":"Germania Magna",
             "region":"Europe",
-            "feature":{"type":"sub","from":"st","to","da"}
+            "feature":{"type":"sub","from":"st","to":"da"}
          },
          {
             "id":55,
@@ -695,7 +695,7 @@
             "points":5,
             "type":"senator",
             "name":"Alpinus Sulpicius Fullo",
-            "feature":{"type":"sub","from":"ch","to","ca"}
+            "feature":{"type":"sub","from":"ch","to":"ca"}
          },
          {
             "id":32,
@@ -703,7 +703,7 @@
             "points":4,
             "type":"senator",
             "name":"Italicus Curtius Nerva",
-            "feature":{"type":"sub","from":"sh","to","ch"}
+            "feature":{"type":"sub","from":"sh","to":"ch"}
          },
          {
             "id":72,
