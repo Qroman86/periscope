@@ -8,12 +8,11 @@ class GameMaster:
 
     def prepareBoard(self):
 
-        data = {}
-        with open('cards.txt') as json_file:
-            data = json.load(json_file)
-
         self.board = Board()
         self.board.preparePack()
+        self.board.initGamers(self.number_of_gamers)
+
+
 
     def startGame(self):
         round = 1
@@ -42,9 +41,24 @@ class GameMaster:
 
 
 class Pack:
+
     def __init__(self):
         self.title = 'The pack'
+        self.cards = []
+        self.cardsMap = {}
+        self.firstId = 0
+        data = {}
+        with open('cards.txt') as json_file:
+            data = json.load(json_file)
+        for cardItem in data['cards']:
+            card = Card(cardItem)
+            self.cards.append(card)
+            self.cardsMap[card.id] = card
+            # print(str(card.tokens[0]))
 
+    def nextCard(self):
+        self.firstId = self.firstId + 1
+        return self.cardsMap[self.firstId]
 
 class Board:
     def __init__(self):
@@ -54,8 +68,29 @@ class Board:
         self.pack = Pack()
         return self.pack
 
+    def setFirstCard(self, gamer):
+        preCards = []
+        x = range(1, 7)
+        for n in x:
+            card = self.pack.nextCard()
+            preCards.append(card)
+        print(preCards)
+
+    def initGamers(self, number_of_gamers):
+        self.gamers = []
+        x = range(1, number_of_gamers + 1)
+        for n in x:
+            gamer = Gamer()
+            gamer.id = n
+            gamer.name = 'Gamer ' + str(gamer.id)
+            self.gamers.append(gamer)
+            self.setFirstCard(gamer)
+            print(gamer.name)
+
+
+
 class Gamer:
-    def __init__(self, number, name):
+    def __init__(self):
         self.title = 'Gamer'
 
 
@@ -63,6 +98,20 @@ class Card:
     def __init__(self):
         self.title = 'Card'
 
+    def __init__(self, cardItem):
+        self.id = cardItem.get('id')
+        self.tokens = cardItem.get('tokens')
+        self.points = cardItem.get('points')
+        self.type = cardItem.get('type')
+        self.name = cardItem.get('name')
+        self.region = cardItem.get('region')
+        self.red = cardItem.get('red')
+        self.gold = cardItem.get('gold')
+        self.wheat = cardItem.get('wheat')
+        self.action = cardItem.get('action')
+
+        # "tokens":["sw", "sw", "st", "st", "da"],
+        #"action":{"type": "remove", "what": "legions", "times": "all_from_one_card"}
 
 class Token:
     def __init__(self):
@@ -70,10 +119,6 @@ class Token:
 
 
 count = 1
-for card in data['cards']:
-    # print('Name: ' + card['name'] + ' count=' + str(count))
-    count = count + 1
-
 
 gameMaster = GameMaster()
 gameMaster.newGame()
