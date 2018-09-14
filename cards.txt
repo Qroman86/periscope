@@ -551,9 +551,200 @@
             "points":3,
             "type":"province",
             "name":"Alpes Maritimae",
-            "region":"Europe"
+            "region":"Europe",
             "action":{"type":"set","times":2, "what":"legion", "to":"sw"}
+         },
+         {
+            "id":12,
+            "tokens":["sw","sh","ch"],
+            "type":"province",
+            "name":"Alpes Cottiae",
+            "region":"Europe",
+            "bonus":{"type":"bonus","from":"sh","get":1,"max":6}
+         },
+         {
+            "id":23,
+            "tokens":["sw","sw","sh","ch","ch"],
+            "points":10,
+            "type":"province",
+            "name":"Hispania Lusitania",
+            "region":"Europe"
+         },
+         {
+            "id":26,
+            "tokens":["sw","sh","ch","ca"],
+            "type":"province",
+            "name":"Hispania Tarraconesis",
+            "region":"Europe",
+            "gold":true,
+            "bonus":{"type":"bonus","from":"ch","get":2,"max":10}
+         },
+         {
+            "id":17,
+            "tokens":["sw","sw","sh","sh","sh"],
+            "points":8,
+            "type":"province",
+            "name":"Galatia",
+            "region":"Asia"
+         },
+         {
+            "id":51,
+            "tokens":["ch","ch","ch","ca"],
+            "points":5,
+            "type":"province",
+            "name":"Germania Superior",
+            "region":"Europe",
+            "action":{"type":"set","times":2, "what":"legion", "to":"ch"}
+         },
+         {
+            "id":9,
+            "tokens":["sw","sw","sh","sh"],
+            "points":3,
+            "type":"province",
+            "name":"Alpes Poeniae",
+            "region":"Europe",
+            "feature":{"type":"sub","from":"sw","to","sh"}
+         },
+         {
+            "id":7,
+            "tokens":["ch","ca","ca","ca"],
+            "points":7,
+            "type":"senator",
+            "name":"Rufinus Lunius Purpureo",
+            "action":{"type":"set","times":2, "what":"legion", "to":"ca"}
+         },
+         {
+            "id":29,
+            "tokens":["sh","sh","sh","ca],
+            "points":4,
+            "type":"senator",
+            "name":"Faustus Sergius Caudex",
+            "action":{"type":"set","times":2, "what":"legion", "to":"sh"}
+         },
+         {
+            "id":33,
+            "tokens":["sw","sw","sh","da"],
+            "points":5,
+            "type":"province",
+            "name":"Gallia Aquitania",
+            "region":"Europe",
+            "action":{"type":"set","times":2, "what":"legion", "to":"da"}
+         },
+         {
+            "id":81,
+            "tokens":["sw","sh","ch","ca","st","da"],
+            "points":5,
+            "type":"senator",
+            "name":"Quintus Cassius Elva",
+            "red":true,
+            "action":{"type":"remove","what":"card"}
+         },
+         {
+            "id":69,
+            "tokens":["sw","sw","ch","ch","ca","st"],
+            "type":"province",
+            "name":"Mauretania",
+            "region":"Africa",
+            "gold":true,
+            "bonus":{"type":"bonus","from":"africa","get":6}
+         },
+         {
+            "id":71,
+            "tokens":["sw","sh","ca","st","da"],
+            "type":"senator",
+            "name":"Proculus Galerius Sura",
+            "red":true,
+            "bonus":{"type":"bonus","from":"red","get":5}
+         },
+         {
+            "id":67,
+            "tokens":["sh","ch","ch","ca","st"],
+            "type":"senator",
+            "name":"Eurycles Curtius Piso",
+            "bonus":{"type":"bonus","from":"senator","get":2}
+         },
+         {
+            "id":3,
+            "tokens":["sw","sw","sw","sh"],
+            "points":6,
+            "type":"province",
+            "name":"Asia",
+            "region":"Asia"
+         },
+         {
+            "id":37,
+            "tokens":["sw","sw","sh","ch","ch"],
+            "points":6,
+            "type":"province",
+            "name":"Gallia Lugdenensis",
+            "region":"Europe"
+            "red":true,
+            "action":{"type":"remove","times":1, "what":"legions"}
+         },
+         {
+            "id":54,
+            "tokens":["sh","ch","ca","st"],
+            "type":"province",
+            "name":"Germania Magna",
+            "region":"Europe",
+            "feature":{"type":"sub","from":"st","to","da"}
+         },
+         {
+            "id":55,
+            "tokens":["ch","ch","ca","ca"],
+            "points":5,
+            "type":"senator",
+            "name":"Alpinus Sulpicius Fullo",
+            "feature":{"type":"sub","from":"ch","to","ca"}
+         },
+         {
+            "id":32,
+            "tokens":["sh","sh","ch","ch"],
+            "points":4,
+            "type":"senator",
+            "name":"Italicus Curtius Nerva",
+            "feature":{"type":"sub","from":"sh","to","ch"}
+         },
+         {
+            "id":72,
+            "tokens":["sw","sh","ca","st","da"],
+            "points":3,
+            "type":"province",
+            "name":"Thracia",
+            "region":"Europe",
+            "action":{"type":"set","times":2, "what":"legion", "to":"any"}
+         },
+         {
+            "id":25,
+            "tokens":["sw","sh","ch","ca"],
+            "type":"senator",
+            "name":"Tiberius Pompeus Cursor",
+            "bonus":{"type":"bonus","from":"ch","get":2,"max":10}
+         },
+         {
+            "id":66,
+            "tokens":["sh","ca","st","da"],
+            "type":"province",
+            "name":"Sophene",
+            "region":"Asia",
+            "bonus":{"type":"bonus","from":"asia","get":4}
+         },
+         {
+            "id":19,
+            "tokens":["sw","sw","sh","st"],
+            "points":3,
+            "type":"province",
+            "name":"Hispania Baetica",
+            "region":"Europe",
+            "action":{"type":"set","times":2, "what":"legion", "to":"st"}
+         },
+         {
+            "id":6,
+            "tokens":["sw","sw","ch"],
+            "points":3,
+            "type":"senator",
+            "name":"Marcus Calpurnius Maximus",
+            "action":{"type":"get","what":"legions","times":1}
          }
-
     ]
 }
