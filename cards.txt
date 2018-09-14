@@ -1,12 +1,12 @@
 {
     "tokens":[
-            {"name":"swords","short":"sw"},
-            {"name":"shield","short":"sh"},
-            {"name":"chariot","short":"ch"},
-            {"name":"standard","short":"st"},
-            {"name":"dagger","short":"da"},
-            {"name":"catapult","short":"ca"},
-            {"name":"joker","short":"jo"}
+            {"name":"swords","short":"sw","amount":6},
+            {"name":"shield","short":"sh","amount":5},
+            {"name":"chariot","short":"ch","amount":4},
+            {"name":"standard","short":"st","amount":2},
+            {"name":"dagger","short":"da","amount":1},
+            {"name":"catapult","short":"ca","amount":3},
+            {"name":"joker","short":"jo","amount":2}
         ],
     "cards":[
         {
