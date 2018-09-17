@@ -1,5 +1,5 @@
 import json
-
+import random
 
 class Action:
     def __init__(self):
@@ -48,12 +48,39 @@ class LogRecord:
         print('LogRecord id:' + str(self.id))
         if (self.type == 'add' and self.what == 'player'):
             print('Add player id:' + str(self.playerid) + ' name:' + str(self.playername))
-
+        if (self.type == 'add' and self.what == 'round'):
+            print('Start round #' + str(self.roundNum))
+        if (self.type == 'add' and self.what == 'card'):
+            print('Add card id:' + str(self.cardid) + ' to task list player #:' + str(self.playerid))
+        if (self.type == 'remove' and self.what == 'card'):
+            print('Remove card id:' + str(self.cardid) + ' to task list player #:' + str(self.playerid))
 
 class Logger:
 
     def __init__(self):
         self.logRecords = []
+
+    def logAddCardToPlayerTasks(self, player, card):
+        logAddTask = LogRecord(self.logRecords)
+        logAddTask.type = 'add'
+        logAddTask.what = 'card'
+        logAddTask.cardid = card.id
+        logAddTask.playerid = player.id
+        logAddTask.playername = player.name
+
+    def logRemoveCardFromPlayerTasks(self, player, card):
+        logAddTask = LogRecord(self.logRecords)
+        logAddTask.type = 'remove'
+        logAddTask.what = 'card'
+        logAddTask.cardid = card.id
+        logAddTask.playerid = player.id
+        logAddTask.playername = player.name
+
+    def logAddRound(self, number_of_round):
+        logAddRound = LogRecord(self.logRecords)
+        logAddRound.type = 'add'
+        logAddRound.what = 'round'
+        logAddRound.roundNum = number_of_round
 
     def logAddPlayer(self, player):
         logAddPlayer = LogRecord(self.logRecords)
@@ -68,7 +95,8 @@ class Logger:
             logRecord.printOut()
         print('End print all log records\n')
 
-
+    def printCurrentRoundRecords(self):
+        print('print current round')
 
 
 class GameMaster:
@@ -76,14 +104,15 @@ class GameMaster:
     def __init__(self):
         self.title = 'GameMaster'
         self.logger = Logger()
+        self.roundCounter = 0
 
     def prepareBoard(self):
 
-
+        self.logger.logAddRound(self.roundCounter)
         self.board = Board()
         self.board.logger = self.logger
         self.board.preparePack()
-        self.board.initGamers(self.number_of_gamers)
+        self.initGamers(self.number_of_gamers, self.board)
 
 
 
@@ -113,13 +142,30 @@ class GameMaster:
     def saveGame(self):
         print('save game')
 
-    def setFirstCards(self, gamer):
-        gamer.taskCards = []
+    def setFirstCards(self, player):
+        player.taskCards = []
         x = range(1, 7)
         for n in x:
             card = self.board.pack.nextCard()
-            gamer.taskCards.append(card)
-        print(gamer.taskCards)
+            player.addCard(card)
+        y = range(1, 4)
+        for n in y:
+            player.removeRandomCard()
+        print(player.taskCards)
+
+    def initGamers(self, number_of_gamers, board):
+        self.gamers = []
+        x = range(1, number_of_gamers + 1)
+        for n in x:
+            player = Gamer(self.logger)
+            self.board.addPlayer(player)
+            player.board = board
+            player.id = n
+            player.name = 'Gamer ' + str(player.id)
+            self.gamers.append(player)
+            self.logger.logAddPlayer(player)
+            self.setFirstCards(player)
+        self.logger.printAllRecords()
 
 class Pack:
 
@@ -142,37 +188,42 @@ class Pack:
 
 
 class Board:
+
+    def addPlayer(self, player):
+        self.players.append(player)
+
     def __init__(self):
+        self.players = []
         self.title = 'Board'
 
     def preparePack(self):
         self.pack = Pack()
         return self.pack
 
-    def initGamers(self, number_of_gamers):
-        self.gamers = []
-        x = range(1, number_of_gamers + 1)
-        for n in x:
-            gamer = Gamer()
-            gamer.logger = self.logger
-            gamer.id = n
-            gamer.name = 'Gamer ' + str(gamer.id)
-            self.gamers.append(gamer)
-            self.logger.logAddPlayer(gamer)
-            self.setFirstCards(gamer)
-        self.logger.printAllRecords()
+
 
 class Gamer:
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.title = 'Gamer'
         self.cards = {}
+        self.taskCards = []
 
     def removeFirstCardById(self, id):
         for card in self.taskCards:
             if (card.id == id):
                 self.taskCards.remove(card)
 
+    def removeRandomCard(self):
+        randomIndex = random.randrange(1, 1 + len(self.taskCards), 1)
 
+        if (randomIndex < len(self.taskCards)):
+            self.logger.logRemoveCardFromPlayerTasks(self, self.taskCards[randomIndex])
+            del self.taskCards[randomIndex]
+
+    def addCard(self, card):
+        self.taskCards.append(card)
+        self.logger.logAddCardToPlayerTasks(self, card)
 
 class Card:
     def __init__(self):
