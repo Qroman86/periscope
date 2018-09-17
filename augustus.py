@@ -69,30 +69,7 @@ class Logger:
         print('End print all log records\n')
 
 
-class LaterRemoveMe:
-    def __init__(self):
-        self.rounds = []
-        self.title = 'Logger'
 
-    def addPrepareRound(self):
-        self.rounds = []
-        round = Round()
-        round.number = 0
-        self.rounds.append(round)
-
-    def addNewRound(self):
-        round = Round()
-        round.number = len(self.rounds) + 1
-        self.rounds.append(round)
-
-    def getCurrentRound(self):
-        return self.rounds[len(self.rounds) - 1]
-
-    def addGamerAction(self, player):
-        self.getCurrentRound().addGamerAction(player)
-
-    def printOutCurrentRound(self):
-        self.getCurrentRound().printOut()
 
 class GameMaster:
 
@@ -114,11 +91,13 @@ class GameMaster:
         self.round = 1
         z = 'continue'
         while self.round > 0:
-            z = raw_input('Round ' + str(self.round) + ' ')
+            z = raw_input('Round ' + str(self.round) + ' $')
             if z == "stop":
                 break
             if z == "next round":
-                self.round = self.round + 1
+                self.round = self.round + 14
+            if z == "print all logs" or z == "pal":
+                self.logger.printAllRecords()
 
     def newGame(self):
         print('new game')
@@ -134,6 +113,13 @@ class GameMaster:
     def saveGame(self):
         print('save game')
 
+    def setFirstCards(self, gamer):
+        gamer.taskCards = []
+        x = range(1, 7)
+        for n in x:
+            card = self.board.pack.nextCard()
+            gamer.taskCards.append(card)
+        print(gamer.taskCards)
 
 class Pack:
 
@@ -152,8 +138,8 @@ class Pack:
             # print(str(card.tokens[0]))
 
     def nextCard(self):
-        self.firstId = self.firstId + 1
-        return self.cardsMap[self.firstId]
+        return self.cards.pop()
+
 
 class Board:
     def __init__(self):
@@ -162,14 +148,6 @@ class Board:
     def preparePack(self):
         self.pack = Pack()
         return self.pack
-
-    def setFirstCard(self, gamer):
-        preCards = []
-        x = range(1, 7)
-        for n in x:
-            card = self.pack.nextCard()
-            preCards.append(card)
-        print(preCards)
 
     def initGamers(self, number_of_gamers):
         self.gamers = []
@@ -180,13 +158,20 @@ class Board:
             gamer.id = n
             gamer.name = 'Gamer ' + str(gamer.id)
             self.gamers.append(gamer)
-            self.setFirstCard(gamer)
             self.logger.logAddPlayer(gamer)
+            self.setFirstCards(gamer)
         self.logger.printAllRecords()
 
 class Gamer:
     def __init__(self):
         self.title = 'Gamer'
+        self.cards = {}
+
+    def removeFirstCardById(self, id):
+        for card in self.taskCards:
+            if (card.id == id):
+                self.taskCards.remove(card)
+
 
 
 class Card:
