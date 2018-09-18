@@ -127,6 +127,10 @@ class GameMaster:
                 self.round = self.round + 14
             if z == "print all logs" or z == "pal":
                 self.logger.printAllRecords()
+            if z.startswith('save'):
+                self.saveGame(z.split(' ')[1])
+            if z.startswith('load'):
+                self.loadGame(z.split(' ')[1])
 
     def newGame(self):
         print('new game')
@@ -136,11 +140,23 @@ class GameMaster:
         self.prepareBoard()
         self.startGame()
 
-    def loadGame(self):
+    def loadGame(self, fileName):
+        with open(fileName + '.json') as json_file:
+            data = json.load(json_file)
+            self.number_of_gamers = data['number_of_players']
         print('load game')
 
-    def saveGame(self):
+    def saveGame(self, fileName):
         print('save game')
+        with open(fileName + '.json', 'w') as outfile:
+            data = self.toJson()
+            json.dump(data, outfile)
+
+    def toJson(self):
+        data = {}
+        data['number_of_players'] = self.number_of_gamers
+        data['board'] = self.board.toJson()
+        return data
 
     def setFirstCards(self, player):
         player.taskCards = []
@@ -200,7 +216,12 @@ class Board:
         self.pack = Pack()
         return self.pack
 
-
+    def toJson(self):
+        data = {}
+        data['players'] = []
+        for player in self.players:
+            data['players'].append(player.toJson())
+        return data
 
 class Gamer:
     def __init__(self, logger):
@@ -208,6 +229,15 @@ class Gamer:
         self.title = 'Gamer'
         self.cards = {}
         self.taskCards = []
+
+    def toJson(self):
+        data = {}
+        data['id'] = self.id
+        data['name'] = self.name
+        data['tasks'] = []
+        for card in self.taskCards:
+            data['tasks'].append(card.toJson())
+        return data
 
     def removeFirstCardById(self, id):
         for card in self.taskCards:
@@ -242,6 +272,21 @@ class Card:
         self.action = cardItem.get('action')
         self.bonus = cardItem.get('bonus')
         self.feature = cardItem.get('feature')
+
+    def toJson(self):
+        data = {}
+        data['id'] = self.id
+        data['tokens'] = self.tokens
+        data['points'] = self.points
+        data['type'] = self.type
+        data['name'] = self.name
+        data['region'] = self.region
+        data['red'] = self.red
+        data['wheat'] = self.wheat
+        data['action'] = self.action
+        data['bonus'] = self.bonus
+        data['feature'] = self.feature
+        return data
         # "tokens":["sw", "sw", "st", "st", "da"],
         #"action":{"type": "remove", "what": "legions", "times": "all_from_one_card"}
 
