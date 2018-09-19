@@ -1,4 +1,18 @@
 {
+    "rewards":[
+        {"type":"simple","for":"senators", "times":3,"bonus":2},
+        {"type":"simple","for":"provinces","region":"europe","times":3,"bonus":4},
+        {"type":"combo","bonus":6,"for":[{"type":"senator"},{"type":"province","region":"europe"},{"type":"province","region":"asia"},{"type":"province","region":"africa"}]},
+        {"type":"simple","for":"provinces","region":"asia","times":3,"bonus":8},
+        {"type":"simple","for":"provinces","region":"africa","times":3,"bonus":10},
+        {"type":"simple","for":"cards", "times":2,"bonus":2},
+        {"type":"simple","for":"cards", "times":3,"bonus":4},
+        {"type":"simple","for":"cards", "times":4,"bonus":6},
+        {"type":"simple","for":"cards", "times":5,"bonus":8},
+        {"type":"simple","for":"cards", "times":6,"bonus":10},
+        {"type":"simple","for":"wheat", "bonus":5},
+        {"type":"simple","for":"gold", "bonus":5}
+        ],
     "tokens":[
             {"name":"swords","short":"sw","amount":6},
             {"name":"shield","short":"sh","amount":5},

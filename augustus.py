@@ -1,5 +1,6 @@
 import json
 import random
+import sys
 
 class Action:
     def __init__(self):
@@ -60,6 +61,9 @@ class Logger:
     def __init__(self):
         self.logRecords = []
 
+    def logAddCardToTasksChooseSet(self):
+        print('try to log')
+
     def logAddCardToPlayerTasks(self, player, card):
         logAddTask = LogRecord(self.logRecords)
         logAddTask.type = 'add'
@@ -113,6 +117,7 @@ class GameMaster:
         self.board.logger = self.logger
         self.board.preparePack()
         self.initGamers(self.number_of_gamers, self.board)
+        self.board.prepareTaskChooseSet()
 
 
 
@@ -120,7 +125,13 @@ class GameMaster:
         self.round = 1
         z = 'continue'
         while self.round > 0:
-            z = input('Round ' + str(self.round) + ' $')
+            message = 'Round ' + str(self.round) + ' $'
+            z = 'none'
+            if (sys.version_info >= (3, 0)):
+                z = input(message)
+            else:
+                z = raw_input(message)
+
             if z == "stop":
                 break
             if z == "next round":
@@ -219,11 +230,16 @@ class Board:
     def __init__(self):
         self.players = []
         self.title = 'Board'
-
+        self.tasksToChoose = []
 
     def preparePack(self):
         self.pack = Pack()
         return self.pack
+
+    def prepareTaskChooseSet(self):
+        self.tasksToChoose = []
+        for i in range(1, 6):
+            self.tasksToChoose.append(self.pack.nextCard())
 
     def toJson(self):
         data = {}
@@ -236,6 +252,7 @@ class Board:
         print('Board')
         for player in self.players:
             player.printOut()
+        Utils.printTaskListShort(self.tasksToChoose, 'Tasks choose set')
 
 class Utils:
     @staticmethod
@@ -245,12 +262,14 @@ class Utils:
             print('id:'+str(taskCard.id)+' points:'+str(taskCard.points))
 
 class Gamer:
+
     def __init__(self, logger):
         self.logger = logger
         self.title = 'Gamer'
         self.cards = {}
         self.taskCards = []
         self.completedTaskCards = []
+        self.legions = 7
 
     def printOut(self):
         print('Player name '+self.name+' id:'+str(self.id))
@@ -274,7 +293,7 @@ class Gamer:
                 self.taskCards.remove(card)
 
     def removeRandomCard(self):
-        randomIndex = random.randrange(1, 1 + len(self.taskCards), 1)
+        randomIndex = random.randrange(0, len(self.taskCards), 1)
 
         if (randomIndex < len(self.taskCards)):
             self.logger.logRemoveCardFromPlayerTasks(self, self.taskCards[randomIndex])
