@@ -120,17 +120,25 @@ class GameMaster:
         self.round = 1
         z = 'continue'
         while self.round > 0:
-            z = raw_input('Round ' + str(self.round) + ' $')
+            z = input('Round ' + str(self.round) + ' $')
             if z == "stop":
                 break
             if z == "next round":
-                self.round = self.round + 14
+                self.round = self.round + 1
             if z == "print all logs" or z == "pal":
                 self.logger.printAllRecords()
             if z.startswith('save'):
                 self.saveGame(z.split(' ')[1])
             if z.startswith('load'):
                 self.loadGame(z.split(' ')[1])
+            if z == "print current round" or z == "pcr":
+                self.printOut()
+
+    def printOut(self):
+        print('===========================================')
+        print('Current information. Round#'+str(self.round))
+        self.board.printOut()
+        print('===========================================')
 
     def newGame(self):
         print('new game')
@@ -171,7 +179,7 @@ class GameMaster:
 
     def initGamers(self, number_of_gamers, board):
         self.gamers = []
-        x = range(1, number_of_gamers + 1)
+        x = range(1, int(number_of_gamers) + 1)
         for n in x:
             player = Gamer(self.logger)
             self.board.addPlayer(player)
@@ -212,6 +220,7 @@ class Board:
         self.players = []
         self.title = 'Board'
 
+
     def preparePack(self):
         self.pack = Pack()
         return self.pack
@@ -223,12 +232,32 @@ class Board:
             data['players'].append(player.toJson())
         return data
 
+    def printOut(self):
+        print('Board')
+        for player in self.players:
+            player.printOut()
+
+class Utils:
+    @staticmethod
+    def printTaskListShort(taskCards, taskCardsLegend):
+        print(taskCardsLegend)
+        for taskCard in taskCards:
+            print('id:'+str(taskCard.id)+' points:'+str(taskCard.points))
+
 class Gamer:
     def __init__(self, logger):
         self.logger = logger
         self.title = 'Gamer'
         self.cards = {}
         self.taskCards = []
+        self.completedTaskCards = []
+
+    def printOut(self):
+        print('Player name '+self.name+' id:'+str(self.id))
+        legend = 'Task cards:'
+        Utils.printTaskListShort(self.taskCards, legend)
+        Utils.printTaskListShort(self.completedTaskCards, 'Completed Task Cards:')
+
 
     def toJson(self):
         data = {}
